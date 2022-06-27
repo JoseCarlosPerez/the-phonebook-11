@@ -1,0 +1,9 @@
+.textArea {
+    align-items: center;
+    display: flex;
+    height: 30px;
+}
+
+.textArea > .text {
+    width: 75px;
+}

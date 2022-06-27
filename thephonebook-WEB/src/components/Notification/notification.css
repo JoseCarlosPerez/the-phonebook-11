@@ -1,0 +1,24 @@
+.notification {
+    width: 100%;
+    height: 30px;
+    padding: 10px;
+    font-size: 20px;
+    border:2px solid black;
+    border-radius: 4px;
+    display: none;
+    margin-bottom: 10px;
+}
+
+.notification.error {
+    border-color: red;
+    color: red;
+    background-color: rgba(255, 0, 0, 0.3);
+    display: block;
+}
+
+.notification.successful {
+    border-color: green;
+    color: green;
+    background-color: rgba(0, 255, 0, 0.3);
+    display: block;
+}

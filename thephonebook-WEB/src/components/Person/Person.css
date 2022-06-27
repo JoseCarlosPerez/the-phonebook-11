@@ -1,0 +1,7 @@
+.person {
+    height: 30px;
+}
+
+.person > input[type=button]{
+    margin-right: 10px;
+}
