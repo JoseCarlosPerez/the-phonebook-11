@@ -24,6 +24,6 @@ jobs:
           npm install
       - name: lint
         run: |
-          cd  ../thephonebook-API
+          cd  ./thephonebook-API
           npm run lint
         
