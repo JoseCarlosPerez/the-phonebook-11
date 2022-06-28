@@ -50,6 +50,7 @@ jobs:
           severity: info
           username: GitHub
           text: New version of Pokedex deployed.
+          description: commit
           details: to https://the-phonebook11.herokuapp.com/
           webhookUrl: ${{ secrets.DISCORD_WEBHOOKURL  }}
   run-if-fail:
@@ -64,5 +65,6 @@ jobs:
           severity: error
           username: GitHub
           text: New version of Pokedex failed.
+          description: commit
           details: bad commit to https://the-phonebook11.herokuapp.com/
           webhookUrl: ${{ secrets.DISCORD_WEBHOOKURL  }}
