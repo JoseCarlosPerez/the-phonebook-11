@@ -36,3 +36,6 @@ jobs:
           heroku_app_name: "the-phonebook11"
           heroku_email: "josekarlos40@gmail.com"
           appdir: ./thephonebook-API
+        env:
+          PORT: 3001
+          MONGODB_URI: ${{secrets.MONGODB_URI}}
