@@ -1,0 +1,24 @@
+name: pipeline!
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches: [master]
+    types: [opened, synchronize]
+jobs:
+  simple_deployment_pipeline:
+    runs-on: ubuntu-20.04
+    if: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, '#skip') }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: npm install 
+        run: |
+          cd ./thephonebook-API |
+          npm install |
+          cd ../thephonebook-WEB |
+          npm install
