@@ -39,3 +39,30 @@ jobs:
         env:
           PORT: 3001
           MONGODB_URI: ${{secrets.MONGODB_URI}}
+  run-if-success:
+    runs-on: ubuntu-latest
+    needs: [simple_deployment_pipeline]
+    steps:
+      - uses: actions/checkout@master
+      - name: Notification success
+        uses: rjstone/discord-webhook-notify@v1.0.4
+        with:
+          severity: info
+          username: GitHub
+          text: New version of Pokedex deployed.
+          details: to https://the-phonebook11.herokuapp.com/
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOKURL  }}
+  run-if-fail:
+    runs-on: ubuntu-latest
+    if: ${{ always() && (needs.simple_deployment_pipeline.result=='failure' || needs.tag_release.result=='failure') }}
+    needs: [simple_deployment_pipeline]
+    steps:
+      - uses: actions/checkout@master
+      - name: Notification fail
+        uses: rjstone/discord-webhook-notify@v1.0.4
+        with:
+          severity: error
+          username: GitHub
+          text: New version of Pokedex failed.
+          details: bad commit to https://the-phonebook11.herokuapp.com/
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOKURL  }}
