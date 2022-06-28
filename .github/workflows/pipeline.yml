@@ -35,7 +35,4 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "the-phonebook11"
           heroku_email: "josekarlos40@gmail.com"
-          healthcheck: "https://the-phonebook11.herokuapp.com/health"
-          checkstring: "ok"
-          rollbackonhealthcheckfailed: true
           appdir: ./thephonebook-API
