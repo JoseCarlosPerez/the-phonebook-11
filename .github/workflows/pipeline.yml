@@ -22,3 +22,8 @@ jobs:
           npm install
           cd ../thephonebook-WEB
           npm install
+      - name: lint
+        run: |
+          cd  ../thephonebook-API
+          npm run lint
+        
