@@ -19,6 +19,4 @@ jobs:
       - name: npm install 
         run: |
           cd ./thephonebook-API |
-          npm install |
           cd ../thephonebook-WEB |
-          npm install
