@@ -49,7 +49,7 @@ jobs:
         with:
           severity: info
           username: GitHub
-          text: New version of Pokedex deployed.
+          text: New version of phonebook deployed.
           description: commit
           details: to https://the-phonebook11.herokuapp.com/
           webhookUrl: ${{ secrets.DISCORD_WEBHOOKURL  }}
@@ -64,7 +64,7 @@ jobs:
         with:
           severity: error
           username: GitHub
-          text: New version of Pokedex failed.
+          text: New version of the phonebook failed.
           description: commit
           details: bad commit to https://the-phonebook11.herokuapp.com/
           webhookUrl: ${{ secrets.DISCORD_WEBHOOKURL  }}
