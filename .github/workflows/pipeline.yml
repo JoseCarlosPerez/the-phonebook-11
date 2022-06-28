@@ -28,5 +28,5 @@ jobs:
           npm run lint
       - name: build
         run: |
-          cd ./thephonebook-API
-          npm run build:ui
+          cd ./thephonebook-WEB
+          npm run build
