@@ -26,4 +26,7 @@ jobs:
         run: |
           cd  ./thephonebook-API
           npm run lint
-        
+      - name: test
+        run: |
+          cd ./thephonebook-WEB
+          npm run test
