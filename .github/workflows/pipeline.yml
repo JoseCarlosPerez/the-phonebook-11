@@ -38,9 +38,20 @@ jobs:
           appdir: ./thephonebook-API
         env:
           HD_MONGODB_URI: ${{secrets.MONGODB_URI}}
+  tag_release:
+    needs: [simple_deployment_pipeline]
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, '#skip') }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.36.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
   run-if-success:
     runs-on: ubuntu-latest
-    needs: [simple_deployment_pipeline]
+    needs: [simple_deployment_pipeline, tag_release]
     steps:
       - uses: actions/checkout@master
       - name: Notification success
@@ -55,7 +66,7 @@ jobs:
   run-if-fail:
     runs-on: ubuntu-latest
     if: ${{ always() && (needs.simple_deployment_pipeline.result=='failure' || needs.tag_release.result=='failure') }}
-    needs: [simple_deployment_pipeline]
+    needs: [simple_deployment_pipeline, tag_release]
     steps:
       - uses: actions/checkout@master
       - name: Notification fail
